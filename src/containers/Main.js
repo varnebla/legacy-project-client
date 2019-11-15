@@ -9,7 +9,8 @@ import TopLists from '../components/TopLists';
 class Main extends Component {
   constructor(props) {
     super(props);
-    fetch('https://listmera.herokuapp.com/api/playlists/recent', {
+    // fetch('https://listmera.herokuapp.com/api/playlists/recent', {
+    fetch('http://localhost:3001/api/playlists/recent', {
       header: {
         'Origin': 'http://listmera.rocks',
       }

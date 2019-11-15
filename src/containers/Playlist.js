@@ -11,7 +11,8 @@ import Track from '../components/Track';
 class Playlist extends Component {
   constructor(props) {
     super(props);
-    fetch(`https://listmera.herokuapp.com/api${window.location.pathname}`, {
+    // fetch(`https://listmera.herokuapp.com/api${window.location.pathname}`, {
+    fetch(`http://localhost:3001/api${window.location.pathname}`, {
       'Origin': 'http://listmera.rocks',
     })
       .then(res => {
@@ -39,7 +40,7 @@ class Playlist extends Component {
   }
 
   collaborate () {
-    fetch(`https://listmera.herokuapp.com/api${window.location.pathname}`, {
+    fetch(`http://localhost:3001/api${window.location.pathname}`, {
       method: 'PUT',
       body: window.localStorage.getItem('user'),
       mode: 'cors',
@@ -55,21 +56,23 @@ class Playlist extends Component {
   }
 
   generate = () => {
+    console.log(window.location.pathname)
     this.setState({
       ...this.state,
       loading: true,
     });
-    fetch(`https://listmera.herokuapp.com/api${window.location.pathname}`, {
+    fetch(`http://localhost:3001/api${window.location.pathname}`, {
       method: 'POST',
       body: window.localStorage.getItem('user'),
       mode: 'cors',
       header: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'Origin': 'http://listmera.rocks',
+        'Origin': 'http://localhost:3000',
       },
-    }).then(res => window.location = '/generated')
-      .catch(e => console.error(e));
+    })
+    // .then(res => window.location = '/generated')
+    //   .catch(e => console.error(e));
   }
 
   copy = () => {
@@ -81,7 +84,7 @@ class Playlist extends Component {
       ...JSON.parse(window.localStorage.getItem('user')),
       copy: true,
     }
-    fetch(`https://listmera.herokuapp.com/api${window.location.pathname}`, {
+    fetch(`http://localhost:3001/api${window.location.pathname}`, {
       method: 'POST',
       body: JSON.stringify(body),
       mode: 'cors',
@@ -99,7 +102,7 @@ class Playlist extends Component {
     const sure = window.confirm(`Hey ${user.name.split(' ')[0]}, are you sure you want to delete this playlist?`);
     if (sure) {
       const body = {username: user.username};
-      fetch(`https://listmera.herokuapp.com/api${window.location.pathname}`, {
+      fetch(`http://localhost:3001/api${window.location.pathname}`, {
         method: 'DELETE',
         body: JSON.stringify(body),
         mode: 'cors',
@@ -137,6 +140,7 @@ class Playlist extends Component {
   }
 
   renderButtons = (state) => {
+    console.log(state)
     let buttonClass;
     if (JSON.parse(window.localStorage.getItem('user')) === null) {
       buttonClass = 'Collabed';

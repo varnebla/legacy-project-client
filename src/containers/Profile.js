@@ -19,7 +19,8 @@ class Profile extends Component {
         User: user.username,
         Origin: 'http://listmera.rocks',
       })
-      fetch('https://listmera.herokuapp.com/api/me', {
+      // fetch('https://listmera.herokuapp.com/api/me', {
+      fetch('http://localhost:3001/api/me', {
         method: 'GET',
         headers: headers
       }).then(res => res.json())

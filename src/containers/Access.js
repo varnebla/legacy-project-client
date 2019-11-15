@@ -7,7 +7,8 @@ import '../App.css';
 class Access extends Component {
 
   redirect() {
-    window.location.href = 'https://listmera.herokuapp.com/api/access';
+    // window.location.href = 'https://listmera.herokuapp.com/api/access';
+    window.location.href = 'http://localhost:3001/api/access';
   }
 
   //============ RENDERING
