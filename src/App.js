@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
   Route,
-} from 'react-router-dom'
+} from 'react-router-dom';
 
 import { connect } from 'react-redux';
 import { login } from './actions';
@@ -18,7 +18,7 @@ import Profile from './containers/Profile';
 import Generated from './containers/Generated';
 
 class App extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     const user = JSON.parse(window.localStorage.getItem('user'));
     if (user) {
@@ -27,7 +27,7 @@ class App extends Component {
     }
   }
   
-  render() {
+  render () {
     return (
       <Router>
         <div className="Wrapper">
@@ -46,10 +46,10 @@ class App extends Component {
 
 const mapStateToProps = (state) => ({
   user: state,
-})
+});
 
 const mapDispatchToProps = (dispatch) => ({
   login: (user) => dispatch(login(user)),
-})
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
