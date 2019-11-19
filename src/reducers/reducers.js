@@ -7,7 +7,7 @@ const user = {
 
 const reducer = (state = user, action) => {
   switch (action.type) {
-  case 'LOGIN':
+  case 'LOGIN': 
     return {
       ...state,
       ...action.user
@@ -28,6 +28,7 @@ const reducer = (state = user, action) => {
       playlists: [],
     };
   case 'UNSET_PLAYLIST':
+    // eslint-disable-next-line no-case-declarations
     const play = state.playlists.filter(el => el !== action.playlist);
     return {
       ...state,

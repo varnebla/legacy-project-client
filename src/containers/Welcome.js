@@ -9,7 +9,7 @@ import Loader from '../components/Loader';
 import '../App.css';
 
 class Welcome extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     const code = {code: query.parse(window.location.search).code};
     // fetch('https://listmera.herokuapp.com/api/register', {
@@ -31,11 +31,11 @@ class Welcome extends Component {
         this.props.login(res);
       })
       .catch(e => console.error(e));
-    }
+  }
 
   //========================================= RENDERING
 
-  render() {
+  render () {
     const user = this.props.user;
     const name = user.name ? user.name : user.username;
     return this.loaded ? (
@@ -51,16 +51,16 @@ class Welcome extends Component {
       <div className="Wrapper">
         <Loader />
       </div>
-    )
+    );
   }
 }
 
 const mapStateToProps = (state) => ({
   user: state,
-})
+});
 
 const mapDispatchToProps = (dispatch) => ({
   login: (user) => dispatch(login(user)),
-})
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Welcome);
