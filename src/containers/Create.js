@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import '../App.css';
 
 import { connect } from 'react-redux';
-import { set } from '../actions'
+import { set } from '../actions';
 
 import Header from '../components/Header';
 
 class Create extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     const user = JSON.parse(window.localStorage.getItem('user'));
     if (!user) {
@@ -20,9 +20,8 @@ class Create extends Component {
     class: 'Selected',
   }
 
-  createPlaylist(listName, selectedValues, selectedTempo) {
+  createPlaylist (listName, selectedValues, selectedTempo) {
     // fetch('https://listmera.herokuapp.com/api/playlist', {
-      console.log(listName, selectedValues, selectedTempo, this.props.user.username);
     fetch('http://localhost:3001/api/playlist', {
       method: 'POST',
       body: JSON.stringify({username: this.props.user.username, name: listName, values: selectedValues, tempo: selectedTempo}),
@@ -34,9 +33,9 @@ class Create extends Component {
       },
     }).then(res => res.json())
       .then(res => {
-        this.props.set(res)
+        this.props.set(res);
         window.localStorage.setItem('user', JSON.stringify(this.props.user));
-        window.location = `/playlist/${res.id}`
+        window.location = `/playlist/${res.id}`;
       })
       .catch(e => console.error(e));
   }
@@ -49,7 +48,7 @@ class Create extends Component {
         selected: [
           ...newSelection,
         ],
-      })
+      });
     } else {
       this.setState({
         ...this.state,
@@ -57,18 +56,18 @@ class Create extends Component {
           ...this.state.selected,
           ref
         ]
-      })
+      });
     }
   }
 
   //========================================= RENDERING
 
-  toggleClass(name) {
+  toggleClass (name) {
     if (this.state.selected.indexOf(name) >= 0) return 'TypeSelector Selected';
     return 'TypeSelector';
   }
 
-  render() {
+  render () {
     return (
       <div className="Wrapper">
         <Header />
@@ -79,7 +78,7 @@ class Create extends Component {
               type="text" 
               ref={el => this.inputName = el || 'Listmera List'}
               placeholder="PLAYLIST NAME"
-              />
+            />
             <h2>Strict Mode</h2>
             <div className="SelectorWrap">
               <button 
@@ -142,10 +141,10 @@ class Create extends Component {
 
 const mapStateToProps = (state) => ({
   user: state,
-})
+});
 
 const mapDispatchToProps = (dispatch) => ({
   set: (playlist) => dispatch(set(playlist)),
-})
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Create);

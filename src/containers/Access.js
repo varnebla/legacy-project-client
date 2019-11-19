@@ -6,14 +6,14 @@ import '../App.css';
 
 class Access extends Component {
 
-  redirect() {
+  redirect () {
     // window.location.href = 'https://listmera.herokuapp.com/api/access';
     window.location.href = 'http://localhost:3001/api/access';
   }
 
   //============ RENDERING
 
-  render() {
+  render () {
     return (
       <div className="Wrapper">
         <Header />

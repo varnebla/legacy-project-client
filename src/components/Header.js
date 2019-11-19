@@ -8,7 +8,7 @@ class Header extends Component {
 
   //========================================= RENDERING
 
-  renderLogin(user) {
+  renderLogin (user) {
     if (!user.name) {
       return (
         <Link to="/access">
@@ -29,28 +29,28 @@ class Header extends Component {
     }
   }
 
-  render() {
+  render () {
     const login = this.renderLogin(this.props.user);
     return (
-        <nav className="NavBar">
-          <div className="MaxWidth">
-            <div className="Logotype">
-              <div className="LogoWrap">
-                <Link to="/">
-                    <img alt="logo" className="Logo" src={require('../assets/listmera.png')}/>
-                </Link>
-              </div>
-              <h1>Listmera</h1>
+      <nav className="NavBar">
+        <div className="MaxWidth">
+          <div className="Logotype">
+            <div className="LogoWrap">
+              <Link to="/">
+                <img alt="logo" className="Logo" src={require('../assets/listmera.png')}/>
+              </Link>
             </div>
-            {login}
+            <h1 data-testid='h1tag'>Listmera</h1>
           </div>
-        </nav>
+          {login}
+        </div>
+      </nav>
     );
   }
 }
 
 const mapStateToProps = (state) => ({
   user: state,
-})
+});
 
 export default connect(mapStateToProps, null)(Header);

@@ -5,7 +5,7 @@ class TopItem extends Component {
 
   //========================================= RENDERING
 
-  renderCover(cover) {
+  renderCover (cover) {
     if (Array.isArray(cover)) {
       return (
         <div className="IconWrap">
@@ -14,17 +14,17 @@ class TopItem extends Component {
           <img alt="album cover" className="PlaylistImg" src={this.props.cover[2] || require('../assets/music-albums.png')}/>
           <img alt="album cover" className="PlaylistImg" src={this.props.cover[3] || require('../assets/music-albums.png')}/>
         </div>
-      )
+      );
     } else {
       return (
         <div className="IconWrap">
           <img alt="album cover" className="PlaylistImg Solo" src={this.props.cover}/>
         </div>
-      )
+      );
     }
   }
 
-  render() {
+  render () {
     const cover = this.renderCover(this.props.cover);
     return (
       <div className="TopPlaylistItem">
@@ -37,7 +37,7 @@ class TopItem extends Component {
           <h5>Artists you may know: {this.props.artists}</h5>
         </div>
         <div className="PlayButton"></div>
-    </div>
+      </div>
     );
   }
 }

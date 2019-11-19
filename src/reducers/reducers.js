@@ -3,7 +3,7 @@ const user = {
   name: '',
   picture: '',
   playlists: []
-}
+};
 
 const reducer = (state = user, action) => {
   switch (action.type) {
@@ -11,7 +11,7 @@ const reducer = (state = user, action) => {
     return {
       ...state,
       ...action.user
-    }
+    };
   case 'SET_PLAYLIST':
     return {
       ...state,
@@ -19,22 +19,22 @@ const reducer = (state = user, action) => {
         ...state.playlists,
         action.playlist.id
       ]
-    }
+    };
   case 'LOGOUT':
     return {
       username: '',
       name: '',
       picture: '',
       playlists: [],
-    }
+    };
   case 'UNSET_PLAYLIST':
     const play = state.playlists.filter(el => el !== action.playlist);
     return {
       ...state,
       playlists: play,
-    }
+    };
   default: return state;
   }
-}
+};
 
 export default reducer;

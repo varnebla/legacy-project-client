@@ -9,24 +9,24 @@ class Banner extends Component {
 
   //========================================= RENDERING
 
-  renderButton(user) {
+  renderButton (user) {
     if (user) {
       return (
         <Link to="/create">
           <button className="Create">LET'S DO THIS</button>
         </Link>
-      )
+      );
     } else {
       return (
         <Link to="/access">
           <button className="Create">LOGIN TO CREATE</button>
         </Link>
-      )
+      );
     }
   }
 
-  render() {
-    const button = this.renderButton(this.props.user.username)
+  render () {
+    const button = this.renderButton(this.props.user.username);
     return (
       <div className="Banner">
         <div className="BannerOverlay">
@@ -40,6 +40,6 @@ class Banner extends Component {
 
 const mapStateToProps = (state) => ({
   user: state,
-})
+});
 
 export default connect(mapStateToProps, null)(Banner);

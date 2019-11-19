@@ -7,7 +7,7 @@ import Banner from '../components/Banner';
 import TopLists from '../components/TopLists';
 
 class Main extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     // fetch('https://listmera.herokuapp.com/api/playlists/recent', {
     fetch('http://localhost:3001/api/playlists/recent', {
@@ -19,22 +19,22 @@ class Main extends Component {
       .then(res => {
         this.setState({
           ...res,
-        })
+        });
       })
       .catch(e => console.error(e));
   }
 
   //========================================= RENDERING
 
-  renderTopLists(state) {
+  renderTopLists (state) {
     if (state) {
-      return <TopLists content={this.state.playlists} title="Recently Created Playlists" />
+      return <TopLists content={this.state.playlists} title="Recently Created Playlists" />;
     } else {
-      return <Loader />
+      return <Loader />;
     }
   }
 
-  render() {
+  render () {
     const lists = this.renderTopLists(this.state);
     return (
       <div className="Wrapper">

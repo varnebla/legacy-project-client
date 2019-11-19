@@ -9,7 +9,7 @@ class TopLists extends Component {
 
   //========================================= RENDERING
 
-  formatFilters(playlist) {
+  formatFilters (playlist) {
     let res = [];
     if (playlist.dance) res.push(playlist.dance);
     if (playlist.energy) res.push(playlist.energy);
@@ -22,7 +22,7 @@ class TopLists extends Component {
     return res;
   }
 
-  renderPlaylists() {
+  renderPlaylists () {
     return this.props.content.map((el, i) => {
       const filters = this.formatFilters(el);
       return (
@@ -36,10 +36,10 @@ class TopLists extends Component {
           />
         </Link>
       );
-    })
+    });
   }
 
-  render() {
+  render () {
     const playlists = this.renderPlaylists();
     return (
       <div className="TopPlaylistWrap">
